@@ -1,0 +1,19 @@
+{% load bootstrap4 %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>A.I.R.E. - Recursos para hospitales</title>
+
+{% bootstrap_css %}
+{% bootstrap_javascript jquery='full' %}
+
+</head>
+<body>
+{# Display django.contrib.messages as Bootstrap alerts #}
+{% bootstrap_messages %}
+
+{% block main %}{% endblock %}
+
+</body>
+</html>

@@ -1,7 +1,9 @@
 asgiref==3.2.5
 backcall==0.1.0
+beautifulsoup4==4.8.2
 decorator==4.4.2
 Django==3.0.4
+django-bootstrap4==1.1.1
 djangorestframework==3.11.0
 ipython==7.13.0
 ipython-genutils==0.2.0
@@ -15,6 +17,7 @@ Pygments==2.6.1
 pytz==2019.3
 PyYAML==5.3
 six==1.14.0
+soupsieve==2.0
 sqlparse==0.3.1
 traitlets==4.3.3
 Unipath==1.1

@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block main %}
+<h1>Necesidades de {{ hospital }}</h1>
+
+<p><a href="{% url 'hospitals:hospital-add-need' hospital.pk %}">Añadir necesidad</a></p>
+
+<table class="table table-hover">
+    <thead>
+    <tr>
+        <th scope="col">Recurso</th>
+        <th scope="col">Cantidad por día</th>
+        <th scope="col">Notas</th>
+        <th scope="col">Actualizado</th>
+    </tr>
+    </thead>
+    <tbody>
+{% for need in needs %}
+    <tr>
+        <td><a href="{% url 'hospitals:resource-detail' need.resource.pk %}">{{need.resource}}</a></td>
+        <td>{{need.amount_per_day}}</td>
+        <td>{{need.comment}}</td>
+        <td>{{need.updated_at}} <a class="btn btn-primary" href="{% url 'hospitals:need-update' need.pk %}">Actualizar</a></td>
+    </tr>
+{% endfor %}
+    </tbody>
+</table>
+{% endblock %}

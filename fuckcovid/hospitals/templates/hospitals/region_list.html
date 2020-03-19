@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block main %}
+<h1>Hospitales en</h1>
+
+<ul class="list-group">
+{% for region in regions %}
+    <li class="list-group-item"><a href="{% url 'hospitals:region-detail' region.pk %}">{{region}}</a></li>
+{% endfor %}
+</ul>
+
+{% endblock %}

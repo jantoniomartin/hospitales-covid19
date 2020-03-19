@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load bootstrap4 %}
+
+
+{% block main %}
+<h1>Nueva necesidad para {{ hospital }}</h1>
+
+<form action="" method="post" class="form">
+  {% csrf_token %}
+  {% bootstrap_form form %}
+  {% buttons %}
+    <button type="submit" class="btn btn-primary">
+      Enviar
+    </button>
+  {% endbuttons %}
+</form>
+
+{% if 'resource' in form.fields %}
+<p>¿El recurso no está en la lista? <a href="{% url 'hospitals:resource-create' %}?next={{ prev_url }}">Añádelo</a></p>
+{% endif %}
+
+{% endblock %}

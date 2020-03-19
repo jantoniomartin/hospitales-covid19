@@ -1,18 +1,15 @@
 from django.urls import path
-from rest_framework.urlpatterns import format_suffix_patterns
 from . import views
 
 
 app_name = 'hospitals'
 urlpatterns = [
-    path('regions/', views.RegionList.as_view()),
+    path('', views.RegionList.as_view(), name='region-list'),
     path('regions/<int:pk>/', views.RegionDetail.as_view(), name='region-detail'),
-    path('regions/<int:pk>/hospitals/', views.HospitalList.as_view()),
-    path('hospitals/<int:pk>/', views.HospitalDetail.as_view(), name='hospital-detail'),
-    path('resources/', views.ResourceList.as_view()),
+    path('hospital/<int:pk>/', views.HospitalDetail.as_view(), name='hospital-detail'),
+    path('hospital/<int:pk>/add', views.HospitalAddNeed.as_view(), name='hospital-add-need'),
+    path('need/<int:pk>/update', views.NeedUpdateView.as_view(), name='need-update'),
+    path('resources/create', views.ResourceCreateView.as_view(), name='resource-create'),
     path('resources/<int:pk>/', views.ResourceDetail.as_view(), name='resource-detail'),
-    path('needs/', views.NeedList.as_view()),
-    path('needs/<int:pk>/', views.NeedDetail.as_view(), name='need-detail'),
 ]
 
-urlpatterns = format_suffix_patterns(urlpatterns)
