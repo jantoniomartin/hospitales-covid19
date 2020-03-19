@@ -78,6 +78,7 @@ class ResourceCreateView(LoginRequiredMixin, CreateView):
     def get_success_url(self):
         return self.request.GET.get('next')
 
+
 class ResourceDetail(DetailView):
     template_name = 'hospitals/resource_detail.html'
     context_object_name = 'resource'
@@ -87,6 +88,13 @@ class ResourceDetail(DetailView):
         context = super().get_context_data(**kwargs)
         context['total_per_day'] = self.object.need_set.aggregate(total_per_day=Sum('amount_per_day'))['total_per_day']
         return context
+
+
+class ResourceList(ListView):
+    template_name = 'hospitals/resource_list.html'
+    context_object_name = 'resources'
+    model = Resource
+
 
 class NeedList(generics.ListCreateAPIView):
     queryset = Need.objects.all()

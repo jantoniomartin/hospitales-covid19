@@ -1,5 +1,6 @@
 from django.db import models
 from django.conf import settings
+from django.db.models import Sum
 from django.urls import reverse
 
 
@@ -40,9 +41,16 @@ class Resource(models.Model):
     class Meta:
         verbose_name = "Recurso"
         verbose_name_plural = "Recursos"
+        ordering = ['name']
 
     def __str__(self):
         return self.name
+
+    def get_total_needs(self):
+        total = self.need_set.aggregate(total_per_day=Sum('amount_per_day'))['total_per_day']
+        if total is not None:
+            return total
+        return 0
 
 
 class Need(models.Model):

@@ -18,8 +18,11 @@
 
   <div class="collapse navbar-collapse" id="navbarColor01">
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link" href="{% url 'hospitals:region-list' %}">Inicio <span class="sr-only">(current)</span></a>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'hospitals:region-list' %}">Regiones</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'hospitals:resource-list' %}">Recursos</a>
       </li>
         {% if request.user.is_authenticated %}
       <li class="nav-item">

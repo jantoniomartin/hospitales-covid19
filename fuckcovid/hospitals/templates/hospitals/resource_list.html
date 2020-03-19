@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block main %}
+<h1>Recursos gestionados</h1>
+
+
+<table class="table table-hover">
+    <thead>
+    <tr>
+        <th scope="col">Recurso</th>
+        <th scope="col">Cantidad por día</th>
+    </tr>
+    </thead>
+    <tbody>
+{% for resource in resources %}
+    <tr>
+        <td><a href="{% url 'hospitals:resource-detail' resource.pk %}">{{resource}}</a></td>
+        <td>{{resource.get_total_needs}}</td>
+    </tr>
+{% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}
