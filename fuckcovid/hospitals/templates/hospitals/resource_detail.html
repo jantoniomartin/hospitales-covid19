@@ -15,7 +15,7 @@
     <tbody>
 {% for need in resource.need_set.all %}
     <tr>
-        <td><a href="{% url 'hospital:hospital-detail' need.hospital.pk %}">{{need.hospital}}</a></td>
+        <td><a href="{% url 'hospitals:hospital-detail' need.hospital.pk %}">{{need.hospital}}</a></td>
         <td>{{need.amount_per_day}}</td>
         <td>{{need.comment}}</td>
         <td>{{need.updated_at}}</td>
