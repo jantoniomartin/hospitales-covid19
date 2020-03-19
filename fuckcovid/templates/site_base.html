@@ -1,0 +1,40 @@
+{% load bootstrap4 %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block head_title %}{% endblock %}A.I.R.E. - Recursos para hospitales</title>
+
+{% bootstrap_css %}
+{% bootstrap_javascript jquery='full' %}
+
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+  <a class="navbar-brand" href="#">A.I.R.E. Recursos para hospitales</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarColor01">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="{% url 'hospitals:region-list' %}">Inicio <span class="sr-only">(current)</span></a>
+      </li>
+        {% if request.user.is_authenticated %}
+      <li class="nav-item">
+          <a class="nav-link" href="{% url 'account_logout' %}">Salir</a>
+      </li>
+        {% endif %}
+    </ul>
+
+  </div>
+</nav>
+
+<div class="col">
+{% block body %}{% endblock %}
+</div>
+
+</body>
+{% block scripts %}{% endblock %}
+</html>

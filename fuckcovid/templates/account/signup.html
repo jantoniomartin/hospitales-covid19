@@ -1,0 +1,44 @@
+{% extends "site_base.html" %}
+
+{% load account_tags %}
+{% load bootstrap %}
+
+{% block head_title %}Registro{% endblock %}
+
+{% block body %}
+<div class="row">
+    <div class="col-md-4">
+    <p class="text-danger">Actualmente el registro se confirma manualmente por un administrador. Puedes intentar acceder más tarde.</p>
+    </div>
+</div>
+    <div class="row">
+        <div class="col-md-4">
+            <form id="signup_form" method="post" action="{% url "account_signup" %}" autocapitalize="off" {% if form.is_multipart %} enctype="multipart/form-data"{% endif %}>
+                <legend>Registro</legend>
+                {% csrf_token %}
+                {{ form|bootstrap }}
+                {% if redirect_field_value %}
+                    <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+                {% endif %}
+                <button type="submit" class="btn btn-primary">Enviar</button>
+            </form>
+            <p class="login-signup">
+                <small>
+                    ¿Ya tienes una cuenta?  <strong><a href="{% urlnext 'account_login' %}">Acceder</a></strong>
+                </small>
+            </p>
+        </div>
+        <div class="col-md-4">
+            {% include "account/_signup_sidebar.html" %}
+        </div>
+    </div>
+{% endblock %}
+
+{% block scripts %}
+    {{ block.super }}
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('#id_username').focus();
+        });
+    </script>
+{% endblock %}

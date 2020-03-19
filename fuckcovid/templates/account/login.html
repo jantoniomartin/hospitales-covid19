@@ -1,0 +1,41 @@
+{% extends "site_base.html" %}
+
+{% load account_tags %}
+{% load bootstrap %}
+
+{% block head_title %}Acceder{% endblock %}
+
+{% block body %}
+    <div class="row">
+        <div class="col-md-4">
+            <form method="POST" action="{% url "account_login" %}" autocapitalize="off" {% if form.is_multipart %} enctype="multipart/form-data"{% endif %}>
+                <legend>Entrar con una cuenta existente</legend>
+                {% csrf_token %}
+                {{ form|bootstrap }}
+                {% if redirect_field_value %}
+                    <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+                {% endif %}
+                <button type="submit" class="btn btn-primary">Entrar</button>
+            </form>
+            {% if ACCOUNT_OPEN_SIGNUP %}
+                <p class="login-signup">
+                    <small>
+                        ¿No tienes una cuenta?  <strong><a href="{% urlnext 'account_signup' %}">Regístrate</a></strong>
+                    </small>
+                </p>
+            {% endif %}
+        </div>
+        <div class="col-md-4">
+            {% include "account/_login_sidebar.html" %}
+        </div>
+    </div>
+{% endblock %}
+
+{% block scripts %}
+    {{ block.super }}
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('#id_username').focus();
+        });
+    </script>
+{% endblock %}
