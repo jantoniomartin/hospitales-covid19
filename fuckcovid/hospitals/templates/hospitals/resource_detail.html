@@ -3,6 +3,13 @@
 {% block main %}
 <h1>Necesidades de {{ resource }}</h1>
 
+<div class="card text-white bg-danger mb-3" style="max-width: 20rem;">
+  <div class="card-header">Total por día</div>
+  <div class="card-body">
+    <h4 class="card-title">{{total_per_day|default_if_none:"No hay datos"}}</h4>
+  </div>
+</div>
+
 <table class="table table-hover">
     <thead>
     <tr>

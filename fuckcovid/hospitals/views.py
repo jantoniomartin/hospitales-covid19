@@ -1,3 +1,4 @@
+from django.db.models import Sum
 from django.shortcuts import get_object_or_404
 from django.urls import reverse
 from django.views.generic import TemplateView, ListView, DetailView, CreateView, UpdateView
@@ -81,6 +82,11 @@ class ResourceDetail(DetailView):
     template_name = 'hospitals/resource_detail.html'
     context_object_name = 'resource'
     model = Resource
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['total_per_day'] = self.object.need_set.aggregate(total_per_day=Sum('amount_per_day'))['total_per_day']
+        return context
 
 class NeedList(generics.ListCreateAPIView):
     queryset = Need.objects.all()
