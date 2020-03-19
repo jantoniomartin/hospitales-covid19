@@ -3,7 +3,10 @@ backcall==0.1.0
 beautifulsoup4==4.8.2
 decorator==4.4.2
 Django==3.0.4
+django-appconf==1.0.3
+django-bootstrap-form==3.4
 django-bootstrap4==1.1.1
+django-user-accounts==3.0.0
 djangorestframework==3.11.0
 ipython==7.13.0
 ipython-genutils==0.2.0
@@ -11,6 +14,7 @@ jedi==0.16.0
 parso==0.6.2
 pexpect==4.8.0
 pickleshare==0.7.5
+pinax-theme-bootstrap==8.0.1
 prompt-toolkit==3.0.4
 ptyprocess==0.6.0
 Pygments==2.6.1

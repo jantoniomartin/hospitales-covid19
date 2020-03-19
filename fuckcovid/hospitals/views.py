@@ -1,6 +1,7 @@
 from django.shortcuts import get_object_or_404
 from django.urls import reverse
 from django.views.generic import TemplateView, ListView, DetailView, CreateView, UpdateView
+from django.contrib.auth.mixins import LoginRequiredMixin
 from .models import Region, Hospital, Resource, Need
 from .serializers import *
 from rest_framework import generics
@@ -37,7 +38,7 @@ class HospitalDetail(DetailView):
         return context
 
 
-class HospitalAddNeed(CreateView):
+class HospitalAddNeed(LoginRequiredMixin, CreateView):
     model = Need
     fields = ['resource', 'amount_per_day', 'comment']
 
@@ -56,7 +57,7 @@ class HospitalAddNeed(CreateView):
         return reverse('hospitals:hospital-detail', args=[self.kwargs['pk']])
 
 
-class NeedUpdateView(UpdateView):
+class NeedUpdateView(LoginRequiredMixin, UpdateView):
     model = Need
     fields = ['amount_per_day', 'comment']
 
@@ -64,7 +65,7 @@ class NeedUpdateView(UpdateView):
         return reverse('hospitals:hospital-detail', args=[str(self.object.hospital.pk)])
 
 
-class ResourceCreateView(CreateView):
+class ResourceCreateView(LoginRequiredMixin, CreateView):
     model = Resource
     fields = ['name', ]
 
