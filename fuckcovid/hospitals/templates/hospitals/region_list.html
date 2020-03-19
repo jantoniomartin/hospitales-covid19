@@ -1,7 +1,15 @@
 {% extends 'base.html' %}
 
 {% block main %}
-<h1>Hospitales en</h1>
+<div class="jumbotron">
+  <h1 class="display-3">Aviso</h1>
+  <p class="lead">En esta web se pretende gestionar una lista de necesidades de recursos para hospitales, como
+  ayuda para la actual crisis del COVID-19 en España.</p>
+    <hr class="my-4">
+    <p>Para más información, ver el <a href="https://foro.coronavirusmakers.org/index.php">Forum A.I.R.E.</a>.</p>
+</div>
+
+<h2>Hospitales en</h2>
 
 <ul class="list-group">
 {% for region in regions %}
