@@ -16,12 +16,28 @@ class Command(BaseCommand):
         with open(options['file']) as f:
             reader = csv.reader(f)
             for row in reader:
+                try:
+                    phone = row[0]
+                except IndexError:
+                    phone = ''
+                try:
+                    name = row[1]
+                except IndexError:
+                    name = ''
+                try:
+                    city = row[2]
+                except IndexError:
+                    city = ''
+                try:
+                    address = row[3]
+                except IndexError:
+                    address = ''
                 hospital, created = Hospital.objects.get_or_create(
                     region = region,
-                    phone = row[0],
-                    name = row[1],
-                    city = row[2],
-                    address = row[3],
+                    phone = phone,
+                    name = name,
+                    city = city,
+                    address = address,
                 )
                 cnt += 1
 
