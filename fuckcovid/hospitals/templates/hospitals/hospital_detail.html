@@ -18,8 +18,10 @@
       <dd>{{ hospital.address }}</dd>
         <dt>Localidad</dt>
       <dd>{{ hospital.city }}</dd>
+      {% if request.user.is_authenticated %}
         <dt>Observaciones</dt>
       <dd>{{ hospital.comment }}</dd>
+      {% endif %}
         </dl>
     </p>
   </div>
