@@ -38,6 +38,11 @@ class HospitalDetail(DetailView):
         return context
 
 
+class HospitalUpdate(LoginRequiredMixin, UpdateView):
+    model = Hospital
+    fields = ['name', 'city', 'phone', 'address', 'comment']
+
+
 class HospitalAddNeed(LoginRequiredMixin, CreateView):
     model = Need
     fields = ['resource', 'amount_per_day', 'comment']

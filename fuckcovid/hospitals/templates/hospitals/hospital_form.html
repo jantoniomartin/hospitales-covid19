@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% load bootstrap4 %}
+
+
+{% block main %}
+<h1>Editar hospital</h1>
+
+<form action="" method="post" class="form">
+  {% csrf_token %}
+  {% bootstrap_form form %}
+  {% buttons %}
+    <button type="submit" class="btn btn-primary">
+      Enviar
+    </button>
+  {% endbuttons %}
+</form>
+
+{% endblock %}

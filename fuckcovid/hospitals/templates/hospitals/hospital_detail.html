@@ -1,9 +1,32 @@
 {% extends 'base.html' %}
 
 {% block main %}
-<h1>Necesidades de {{ hospital }}</h1>
+<h1>{{ hospital }}</h1>
 
-<p><a href="{% url 'hospitals:hospital-add-need' hospital.pk %}">Añadir necesidad</a></p>
+<p><a href="{% url 'hospitals:hospital-add-need' hospital.pk %}">Añadir necesidad</a> |
+<a href="{% url 'hospitals:hospital-update' hospital.pk %}">Modificar hospital</a></p>
+
+<div class="card text-white bg-primary mb-3" style="max-width: 20rem;">
+  <div class="card-header">Datos del hospital</div>
+  <div class="card-body">
+    <h4 class="card-title">{{hospital.name}}</h4>
+    <p class="card-text">
+        <dl>
+        <dt>Teléfono</dt>
+      <dd>{{ hospital.phone }}</dd>
+        <dt>Dirección</dt>
+      <dd>{{ hospital.address }}</dd>
+        <dt>Localidad</dt>
+      <dd>{{ hospital.city }}</dd>
+        <dt>Observaciones</dt>
+      <dd>{{ hospital.comment }}</dd>
+        </dl>
+    </p>
+  </div>
+</div>
+
+
+<h2>Necesidades</h2>
 
 <table class="table table-hover">
     <thead>
