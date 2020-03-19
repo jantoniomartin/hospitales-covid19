@@ -25,6 +25,7 @@ class Hospital(models.Model):
     class Meta:
         verbose_name = "Hospital"
         verbose_name_plural = "Hospitales"
+        ordering = ['name']
 
     def __str__(self):
         return f"{self.name} ({self.region})"
