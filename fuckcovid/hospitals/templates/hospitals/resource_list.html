@@ -10,6 +10,7 @@
         <th scope="col">Recurso</th>
         <th scope="col">Demanda por día</th>
         <th scope="col">Oferta por día</th>
+        <th scope="col">Déficit</th>
     </tr>
     </thead>
     <tbody>
@@ -18,6 +19,7 @@
         <td><a href="{% url 'hospitals:resource-detail' resource.pk %}">{{resource}}</a></td>
         <td>{{resource.get_total_needs}}</td>
         <td>{{resource.get_total_production}}</td>
+        <td>{{resource.get_deficit}}</td>
     </tr>
 {% endfor %}
     </tbody>

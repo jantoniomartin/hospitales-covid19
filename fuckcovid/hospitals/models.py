@@ -58,6 +58,10 @@ class Resource(models.Model):
             return total
         return 0
 
+    def get_deficit(self):
+        deficit = self.get_total_needs() - self.get_total_production()
+        return deficit if deficit >= 0 else 0
+
 
 class Need(models.Model):
     hospital = models.ForeignKey('Hospital', verbose_name="hospital", on_delete=models.CASCADE)
