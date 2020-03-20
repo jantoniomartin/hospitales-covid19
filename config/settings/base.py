@@ -5,18 +5,9 @@ from django.core.exceptions import ImproperlyConfigured
 from unipath import Path
 
 
-def get_env_variable(var_name):
-    """Get an environment variable or return exception."""
-    try:
-        return os.environ[var_name]
-    except KeyError:
-        error_msg = 'Set the {} environment variable'.format(var_name)
-        raise ImproperlyConfigured(error_msg)
-
-
 BASE_DIR = Path(__file__).ancestor(3)
 
-SECRET_KEY = get_env_variable('COVID_SECRET_KEY')
+SECRET_KEY = os.environ['COVID_SECRET_KEY'] if 'COVID_SECRET_KEY' in os.environ else None
 
 DEBUG = True
 
