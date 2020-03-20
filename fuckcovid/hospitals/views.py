@@ -7,6 +7,7 @@ from .models import Region, Hospital, Resource, Need
 from .serializers import *
 from rest_framework import generics
 
+
 class Home(TemplateView):
     template_name = 'hospitals/home.html'
 

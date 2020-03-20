@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+
+{% block main %}
+<h1>{{ maker }}</h1>
+
+<p><a href="">Añadir producción</a> |
+<a href="">Modificar proveedor</a></p>
+
+<div class="card text-white bg-light mb-3" style="max-width: 20rem;">
+  <div class="card-header">Datos del proveedor</div>
+  <div class="card-body">
+    <h4 class="card-title">{{maker.name}}</h4>
+    <p class="card-text">
+        <dl>
+        <dt>Teléfono</dt>
+      <dd>{{ maker.phone }}</dd>
+        <dt>Dirección</dt>
+      <dd>{{ maker.address }}</dd>
+        <dt>Localidad</dt>
+      <dd>{{ maker.city }}</dd>
+      {% if request.user.is_authenticated %}
+        <dt>Observaciones</dt>
+      <dd>{{ maker.comment }}</dd>
+      {% endif %}
+        </dl>
+    </p>
+  </div>
+</div>
+
+
+<h2>Capacidad de producción</h2>
+
+<table class="table table-hover">
+    <thead>
+    <tr>
+        <th scope="col">Recurso</th>
+        <th scope="col">Cantidad por día</th>
+        <th scope="col">Notas</th>
+        <th scope="col">Donación</th>
+        <th scope="col">Actualizado</th>
+    </tr>
+    </thead>
+    <tbody>
+{% for production in productions %}
+    <tr>
+        <td><a href="{% url 'hospitals:resource-detail' need.resource.pk %}">{{production.resource}}</a></td>
+        <td>{{production.amount_per_day}}</td>
+        <td>{{production.comment}}</td>
+        <td>{{production.donation|yesno:"Sí,No"}}</td>
+        <td>{{production.updated_at}} <a class="btn btn-primary" href="">Actualizar</a></td>
+    </tr>
+{% endfor %}
+    </tbody>
+</table>
+{% endblock %}

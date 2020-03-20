@@ -39,6 +39,7 @@ INSTALLED_APPS = [
 
     'fuckcovid.auth',
     'fuckcovid.hospitals',
+    'fuckcovid.makers',
 ]
 
 MIDDLEWARE = [

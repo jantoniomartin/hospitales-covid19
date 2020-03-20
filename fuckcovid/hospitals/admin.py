@@ -5,10 +5,12 @@ from fuckcovid.hospitals.models import Region, Hospital, Resource, Need
 class NeedInline(admin.TabularInline):
     model = Need
 
+
 class HospitalAdmin(admin.ModelAdmin):
     inlines = [
         NeedInline,
     ]
+
 
 class ResourceAdmin(admin.ModelAdmin):
     inlines = [

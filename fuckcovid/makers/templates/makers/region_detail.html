@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block main %}
+<h1>Proveedores en {{ region }}</h1>
+
+<ul class="list-group">
+{% for maker in makers %}
+    <li class="list-group-item"><a href="{% url 'makers:maker-detail' maker.pk %}">{{maker}}</a></li>
+{% endfor %}
+</ul>
+{% endblock %}
