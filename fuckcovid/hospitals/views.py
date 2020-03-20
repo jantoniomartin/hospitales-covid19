@@ -88,6 +88,7 @@ class ResourceDetail(DetailView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['total_per_day'] = self.object.need_set.aggregate(total_per_day=Sum('amount_per_day'))['total_per_day']
+        context['production_per_day'] = self.object.production_set.aggregate(total_per_day=Sum('amount_per_day'))['total_per_day']
         return context
 
 

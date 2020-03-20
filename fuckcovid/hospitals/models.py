@@ -52,6 +52,12 @@ class Resource(models.Model):
             return total
         return 0
 
+    def get_total_production(self):
+        total = self.production_set.aggregate(total_per_day=Sum('amount_per_day'))['total_per_day']
+        if total is not None:
+            return total
+        return 0
+
 
 class Need(models.Model):
     hospital = models.ForeignKey('Hospital', verbose_name="hospital", on_delete=models.CASCADE)
