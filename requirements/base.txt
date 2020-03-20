@@ -7,6 +7,7 @@ django-appconf==1.0.3
 django-bootstrap-form==3.4
 django-bootstrap4==1.1.1
 django-user-accounts==3.0.0
+django-sampledatahelper==0.5
 djangorestframework==3.11.0
 ipython==7.13.0
 ipython-genutils==0.2.0

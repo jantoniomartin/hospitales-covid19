@@ -27,6 +27,7 @@ INSTALLED_APPS = [
     'account',
     'pinax_theme_bootstrap',
     'bootstrapform',
+    'sampledatahelper',
 
     'fuckcovid.auth',
     'fuckcovid.hospitals',
@@ -110,3 +111,16 @@ BOOTSTRAP4 = {
 }
 
 #django-user-accounts settings
+
+# Sample data generation
+
+SAMPLEDATAHELPER_MODELS = [
+    { 'model': 'sites.Site', 'number': 1, 'fields_overwrite': [('domain', '127.0.0.1'), ('name', '127.0.0.1')]},
+    { 'model': 'fuckcovid_auth.User', 'number': 10, },
+    { 'model': 'hospitals.Region', 'number': 10, },
+    { 'model': 'hospitals.Hospital', 'number': 100, },
+    { 'model': 'hospitals.Resource', 'number': 1000, },
+    { 'model': 'hospitals.Need', 'number': 250, 'fields_overwrite': [('amount_per_day', lambda _, sd: sd.int(10, 1500))], },
+    { 'model': 'makers.Maker', 'number': 30, },
+    { 'model': 'makers.Production', 'number': 200, 'fields_overwrite': [('amount_per_day', lambda _, sd: sd.int(10, 1500))]},
+]
