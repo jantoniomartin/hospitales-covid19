@@ -35,22 +35,12 @@ SECRET_KEY="tu-clave-secreta"
 python manage.py migrate
 ```
 
-### Paso 5. Crear el site local
+### Paso 5. Cargar los datos de prueba
 
-Ejecutamos la shell de python
 
 ```
-python manage shell
+python manage sampledatafiller
 ```
-
-Y dentro de la shell ejecutamos el siguiente codigo
-
-```python
-from django.contrib.sites.models import Site
-Site.objects.create(domain='127.0.0.1', name='127.0.0.1')
-```
-
-Tras esto presionamos CTRL+D para salir de la shell.
 
 ### Paso 6. Ejecutar el entorno
 
