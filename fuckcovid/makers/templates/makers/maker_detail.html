@@ -3,7 +3,7 @@
 {% block main %}
 <h1>{{ maker }}</h1>
 
-<p><a href="">Añadir producción</a> |
+<p><a href="{% url 'makers:production-create' maker.pk %}">Añadir producción</a> |
 <a href="{% url 'makers:maker-update' maker.pk %}">Modificar proveedor</a></p>
 
 <div class="card bg-light mb-3" style="max-width: 20rem;">
@@ -43,11 +43,11 @@
     <tbody>
 {% for production in productions %}
     <tr>
-        <td><a href="{% url 'hospitals:resource-detail' need.resource.pk %}">{{production.resource}}</a></td>
+        <td><a href="{% url 'hospitals:resource-detail' production.resource.pk %}">{{production.resource}}</a></td>
         <td>{{production.amount_per_day}}</td>
         <td>{{production.comment}}</td>
         <td>{{production.donation|yesno:"Sí,No"}}</td>
-        <td>{{production.updated_at}} <a class="btn btn-primary" href="">Actualizar</a></td>
+        <td>{{production.updated_at}} <a class="btn btn-primary" href="{% url 'makers:production-update' production.pk %}">Actualizar</a></td>
     </tr>
 {% endfor %}
     </tbody>
