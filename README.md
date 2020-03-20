@@ -51,3 +51,11 @@ Site.objects.create(domain='127.0.0.1', name='127.0.0.1')
 ```
 
 Tras esto presionamos CTRL+D para salir de la shell.
+
+### Paso 6. Ejecutar el entorno
+
+Por último iniciamos nuestra aplicación ejecutando:
+
+```
+python manage runserver
+```
