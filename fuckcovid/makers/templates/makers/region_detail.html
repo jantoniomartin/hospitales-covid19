@@ -3,6 +3,8 @@
 {% block main %}
 <h1>Proveedores en {{ region }}</h1>
 
+<p><a href="{% url 'makers:maker-create' %}">Añadir proveedor</a></p>
+
 <ul class="list-group">
 {% for maker in makers %}
     <li class="list-group-item"><a href="{% url 'makers:maker-detail' maker.pk %}">{{maker}}</a></li>

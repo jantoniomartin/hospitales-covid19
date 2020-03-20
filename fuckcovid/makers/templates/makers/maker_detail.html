@@ -4,9 +4,9 @@
 <h1>{{ maker }}</h1>
 
 <p><a href="">Añadir producción</a> |
-<a href="">Modificar proveedor</a></p>
+<a href="{% url 'makers:maker-update' maker.pk %}">Modificar proveedor</a></p>
 
-<div class="card text-white bg-light mb-3" style="max-width: 20rem;">
+<div class="card bg-light mb-3" style="max-width: 20rem;">
   <div class="card-header">Datos del proveedor</div>
   <div class="card-body">
     <h4 class="card-title">{{maker.name}}</h4>
