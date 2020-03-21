@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block main %}
+<h1>Perfil de usuario</h1>
+
+<p><a href="{% url 'auth:profile-update' %}">Modificar perfil</a></p>
+
+<div class="card text-white bg-primary mb-3" style="max-width: 20rem;">
+  <div class="card-header">Datos del perfil</div>
+  <div class="card-body">
+    <h4 class="card-title">{{profile.name}} {{profile.surname}}</h4>
+    <p class="card-text">
+        <dl>
+        <dt>Empresa</dt>
+        <dd>{{ profile.company }}</dd>
+        <dt>Dirección</dt>
+        <dd>{{ profile.address }}</dd>
+        <dt>Teléfono</dt>
+        <dd>{{ profile.phone }}</dd>
+        <dt>Localidad</dt>
+        <dd>{{ profile.city }}</dd>
+        <dt>País</dt>
+        <dd>{{ profile.country }}</dd>
+        </dl>
+    </p>
+  </div>
+</div>
+
+{% endblock %}

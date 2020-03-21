@@ -14,8 +14,9 @@ class Profile(models.Model):
     address = models.TextField("dirección", blank=True, null=True)
     phone = models.CharField("teléfono", max_length=15, blank=True, null=True)
     city = models.CharField("localidad", max_length=100, blank=True, null=True)
-    country = models.CharField("localidad", max_length=100, blank=True, null=True)
+    country = models.CharField("país", max_length=100, blank=True, null=True)
 
     class Meta:
         verbose_name = "perfil"
         verbose_name_plural = "perfiles"
+

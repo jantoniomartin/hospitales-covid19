@@ -1,9 +1,10 @@
-from rest_framework import routers
+from django.urls import path
+from . import views
 
-from .views import UserViewSet
 
 app_name = 'auth'
-router = routers.SimpleRouter()
-router.register(r'users', UserViewSet)
+urlpatterns = [
+    path('profile/', views.ProfileDetail.as_view(), name='profile-detail'),
+    path('profile/edit/', views.ProfileUpdate.as_view(), name='profile-update'),
+]
 
-urlpatterns = router.urls
