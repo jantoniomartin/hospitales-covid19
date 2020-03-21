@@ -1,5 +1,6 @@
 from django.contrib.auth.models import AbstractUser
 from django.db import models
+from django.db.models.signals import post_save
 
 
 class User(AbstractUser):
@@ -8,8 +9,8 @@ class User(AbstractUser):
 
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    name = models.CharField("nombre", max_length=255)
-    surname = models.CharField("apellidos", max_length=255)
+    name = models.CharField("nombre", max_length=255, blank=True, null=True)
+    surname = models.CharField("apellidos", max_length=255, blank=True, null=True)
     company = models.CharField("empresa", max_length=255, blank=True, null=True)
     address = models.TextField("dirección", blank=True, null=True)
     phone = models.CharField("teléfono", max_length=15, blank=True, null=True)
@@ -20,3 +21,9 @@ class Profile(models.Model):
         verbose_name = "perfil"
         verbose_name_plural = "perfiles"
 
+
+def create_profile(sender, instance, created, **kwargs):
+    if created:
+        Profile.objects.create(user=instance)
+
+post_save.connect(create_profile, sender=User)
