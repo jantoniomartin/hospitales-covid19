@@ -20,6 +20,7 @@ from django.views.generic import RedirectView
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/', include('account.urls')),
+    path('auth/', include('fuckcovid.auth.urls', namespace='auth')),
     path('hospitals/', include('fuckcovid.hospitals.urls', namespace='hospitals')),
     path('makers', include('fuckcovid.makers.urls', namespace='makers')),
     path('', RedirectView.as_view(pattern_name='hospitals:region-list')),

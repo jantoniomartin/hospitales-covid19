@@ -27,13 +27,16 @@
       <li class="nav-item">
         <a class="nav-link" href="{% url 'hospitals:resource-list' %}">Recursos</a>
       </li>
-        {% if request.user.is_authenticated %}
+    </ul>
+    <ul class="navbar-nav navbar-right">
+      {% if request.user.is_authenticated %}
+      <li class="nav-item">
+          <a class="nav-link" href="{% url 'auth:profile-detail' %}">Mi cuenta</a>
+      </li>
       <li class="nav-item">
           <a class="nav-link" href="{% url 'account_logout' %}">Salir</a>
       </li>
         {% endif %}
-    </ul>
-    <ul class="navbar-nav navbar-right">
       <li><a class="nav-link" href="https://github.com/jantoniomartin/hospitales-covid19">Github</a></li>
     </ul>
 
