@@ -39,7 +39,7 @@ python manage.py migrate
 
 
 ```
-python manage sampledatafiller
+python manage.py sampledatafiller
 ```
 
 ### Paso 6. Ejecutar el entorno
@@ -47,5 +47,5 @@ python manage sampledatafiller
 Por último iniciamos nuestra aplicación ejecutando:
 
 ```
-python manage runserver
+python manage.py runserver
 ```
