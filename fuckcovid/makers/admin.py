@@ -1,14 +1,18 @@
 from django.contrib import admin
-from fuckcovid.makers.models import Maker, Production
+from ..hospitals.models import Commitment
+from .models import Maker, Production
 
 
 class ProductionInline(admin.TabularInline):
     model = Production
 
+class CommitmentInline(admin.TabularInline):
+    model = Commitment
 
 class MakerAdmin(admin.ModelAdmin):
     inlines = [
         ProductionInline,
+        CommitmentInline,
     ]
 
 
