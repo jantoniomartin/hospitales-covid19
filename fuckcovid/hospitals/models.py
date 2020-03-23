@@ -62,6 +62,17 @@ class Resource(models.Model):
         deficit = self.get_total_needs() - self.get_total_production()
         return deficit if deficit >= 0 else 0
 
+    @property
+    def weekly_commitment(self):
+        return Commitment.objects.filter(
+            need__resource=self).aggregate(
+                Sum('amount_per_week'))['amount_per_week__sum']
+
+    @property
+    def daily_commitment(self):
+        weekly = self.weekly_commitment
+        return int(weekly / 7) if weekly else None
+
 
 class Need(models.Model):
     hospital = models.ForeignKey('Hospital', verbose_name="hospital", on_delete=models.CASCADE)
@@ -78,3 +89,10 @@ class Need(models.Model):
 
     def __str__(self):
         return str(self.resource)
+
+class Commitment(models.Model):
+    need = models.ForeignKey(Need, on_delete=models.CASCADE)
+    maker = models.ForeignKey('makers.Maker', on_delete=models.CASCADE)
+    amount_per_week = models.PositiveIntegerField('Cantidad por semana',
+        default=0)
+    
