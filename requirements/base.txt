@@ -8,7 +8,7 @@ django-bootstrap-form==3.4
 django-bootstrap4==1.1.1
 django-user-accounts==3.0.0
 django-sampledatahelper==0.5
-djangorestframework==3.11.0
+djangorestframework==3.11.2
 ipython==7.13.0
 ipython-genutils==0.2.0
 jedi==0.16.0
