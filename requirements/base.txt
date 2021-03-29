@@ -18,7 +18,7 @@ pickleshare==0.7.5
 pinax-theme-bootstrap==8.0.1
 prompt-toolkit==3.0.4
 ptyprocess==0.6.0
-Pygments==2.6.1
+Pygments==2.7.4
 pytz==2019.3
 PyYAML==5.3
 six==1.14.0
