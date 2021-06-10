@@ -2,7 +2,7 @@ asgiref==3.2.5
 backcall==0.1.0
 beautifulsoup4==4.8.2
 decorator==4.4.2
-Django==3.0.4
+Django==3.1.12
 django-appconf==1.0.3
 django-bootstrap-form==3.4
 django-bootstrap4==1.1.1
